@@ -10,18 +10,9 @@
 <h1>Lorem Ipsum</h1>
 
 <!-- The iframe section to add to the page -->
-<iframe height="1" width="1" frameborder="0" srcdoc=`
-        <html>
-            <body>
-                <!-- adm start (mock) -->
-                <div>
-                    <script id="og-configure-player">
-                        window.OG_SHOWCASE = {
-                            CONFIG: {
-                                bid_response: {
-                                    height: 667,
-                                    width: 375,
-                                    ad_content: ()=>{"window.MRAID_ENV = {"eventHandlers":{},"mwebFlag":true,"orientation":"portrait","sdk":"Presage","sdkVersion":"3.0.0"};
+  <script>
+    function getCode(){
+  window.MRAID_ENV = {"eventHandlers":{},"mwebFlag":true,"orientation":"portrait","sdk":"Presage","sdkVersion":"3.0.0"};
 
 window.isOgyPreview = true;
 
@@ -71,7 +62,21 @@ injectMraid = function() {
   script.src = 'https://mraid.presage.io/b1b4d2c/mraid.js';
   head.appendChild(script);
 },
-injectMraid();},
+injectMraid();
+  }
+  </script>
+<iframe height="1" width="1" frameborder="0" srcdoc=`
+        <html>
+            <body>
+                <!-- adm start (mock) -->
+                <div>
+                    <script id="og-configure-player">
+                        window.OG_SHOWCASE = {
+                            CONFIG: {
+                                bid_response: {
+                                    height: 667,
+                                    width: 375,
+                                    ad_content: "getCode()",
                                     media_type: "video",
                                     ad_unit_type: "overlay_thumbnail",
                                 },
