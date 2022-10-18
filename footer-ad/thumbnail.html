@@ -11,59 +11,6 @@
 
 <!-- The iframe section to add to the page -->
   <script type='text/javascript'>
-    function getCode(){
-  window.MRAID_ENV = {"eventHandlers":{},"mwebFlag":true,"orientation":"portrait","sdk":"Presage","sdkVersion":"3.0.0"};
-
-window.isOgyPreview = true;
-
-var formatEntrypoint = "https://devc.litecdn.com/2022-10-04-c3e3d2e5/formats/mraid/index.js",
-parameters = {"ad_unit_type":"header_ad","allow_after_ad":true,"allow_precaching":true,"assets_list_url":"https://devc.litecdn.com/2022-10-04-c3e3d2e5/formats/mraid/assets.json","entrypoint":"https://devc.litecdn.com/2022-10-04-c3e3d2e5/formats/mraid/index.js","frame":{"size":{"width":-1,"height":-1}},"helper":"multi_webviews","is_mraid":true,"keep_alive":true,"launch_type":"sdk","no_assets":true,"sdk_background_color":"#000000","use_icon":true,"use_simple_injection":true,"zones":[{"name":"controller","url":"[cdn_format_url][format_hash]/formats/mraid-wrapper/index.html","size":{"width":-1,"height":-1}}],"close_btn_countdown_font_color":"#C1C1C1","close_btn_countdown_circle_color":"#C1C1C1","close_btn_icon_color":"#C1C1C1","close_btn_size":30,"auto_close_display_after":20,"use_close_btn_countdown":true,"identifier":"edouard-motionly-interstitial-test","redirect_type":"ocs","mraid_tag":"<script src=\"https://api-dev.motionly.ogury.co/javascript/1/sdk/?customerId=sandbox&applicationId=callbacks\" async></script>\n<img\n  id=\"xp\"\n  motionly-params='\n  {\n    \"experienceId\": \"5641986128216064\",\n    \"variables\": {\n      \"ratio\": 1.7777,\n      \"events\": {\n        \"Request\": \"[creative_requested_tracking_url]\",\n        \"Load\": \"[creative_loaded_tracking_url]\",\n        \"Display\": \"[creative_rendered_tracking_url]\",\n        \"Click\": \"[creative_click_tracking_url]\",\n        \"Engagement\": \"[celtra_engagement_tracking_url]\"\n      }\n    }\n  }'\n/>","overrides":{"params":{"orientation":"portrait"},"format":{"ios_requirement":">=15"}},"creative_ratio":1.33,"display_trackers":"","omid_trackers":"","omid_video_trackers":"","omid_tracking_enabled":false,"trigger_impression_after_preload":false,"click_url":"https://www.ogury.com"},
-callbacks = {};
-context = {"advertiserId":1,"impressionId":"imp_20302-header_ad","campaignId":1,"appBundle":"","apiKey":"1","sdkVersion":"3.0.0","userId":"user_20302-header_ad","_appExchange":"Ogury","deviceOs":"android","userDataOptin":true,"richadvertId":"advert_20302-header_ad","adUnitId":"1","adUnitType":"header_ad","isAdUnitDraggable":false,"formatName":"Display Redirect Header","page":"","domain":"","advertDeliveryType":"precaching","deviceModel":"","deviceType":"","ioId":1,"userInstanceToken":""},
-getParameter = function(key) {
-  return parameters[key];
-},
-getContainer = function() {
-  var container = document.querySelector('#root');
-  if (!container) {
-    container = document.createElement('div');
-    container.id = 'root';
-    try {
-      document.body.insertBefore(container, document.body.firstChild);
-    } catch (e) {
-      document.body.appendChild(container);
-    }
-  }
-  return container;
-},
-loadFormat = function() {
-  window.initFormat({
-    container: getContainer(),
-    getParameter: getParameter,
-    context: context,
-    callbacks: callbacks
-  });
-},
-injectScript = function(uri, onLoad) {
-  var head = document.getElementsByTagName('head')[0],
-  script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.onload = onLoad;
-  script.src = uri;
-  head.appendChild(script);
-},
-injectMraid = function() {
-  var head = document.getElementsByTagName('head')[0],
-  script = document.createElement('script');
-  script.type = 'text/javascript';
-  script.onload = function() {
-    injectScript(formatEntrypoint, loadFormat)
-  };
-  script.src = 'https://mraid.presage.io/b1b4d2c/mraid.js';
-  head.appendChild(script);
-},
-injectMraid();
-  }
   </script>
 <iframe height="1" width="1" frameborder="0" srcdoc=`
         <html>
@@ -76,7 +23,7 @@ injectMraid();
                                 bid_response: {
                                     height: 667,
                                     width: 375,
-                                    ad_content: "getCode()",
+                                    ad_content: "console.log('coucou')",
                                     media_type: "video",
                                     ad_unit_type: "overlay_thumbnail",
                                 },
