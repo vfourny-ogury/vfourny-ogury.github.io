@@ -13,7 +13,7 @@
   Sentry.onLoad(function() {
     console.log('sentry config loaded')
                 Sentry.init({
-                    release: process.env.it,
+                    release: '3',
                     integrations: [
                         new Sentry.Integrations.GlobalHandlers({
                             onerror: false,
@@ -34,7 +34,7 @@
                         // eslint-disable-next-line
                         return event.tags && Object.keys(event.tags).includes('error.catcher') ? event : null
                     },
-                })
+                }
   });
 </script>
   </head>
