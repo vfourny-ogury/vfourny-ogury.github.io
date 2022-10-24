@@ -6,18 +6,35 @@
     <script
   src="https://js.sentry-cdn.com/48134d56e6314e328619ab23ec620db4.min.js"
   crossorigin="anonymous"
-></script>
+>
+            console.log('Sentry Lazy Loader loaded')</script>
     
     <script>
   Sentry.onLoad(function() {
-    Sentry.init({
-      release: " ... ",
-      environment: " ... "
-    });
-    Sentry.configureScope(scope => {
-      scope.setTag( ... );
-    });
-    // etc.
+    console.log('sentry config loaded')
+                Sentry.init({
+                    release: Config.get(process.env.TAG_VERSION),
+                    integrations: [
+                        new Sentry.Integrations.GlobalHandlers({
+                            onerror: false,
+                            onunhandledrejection: false,
+                        }),
+                    ],
+                    tracesSampleRate: 1.0,
+                    allowUrls: [
+                        /mwtw\.presage\.io/i,
+                        /mobile-web-tag-www\.devc\.cloud\.ogury\.io/i,
+                        /mobile-web-tag-www\.staging\.cloud\.ogury\.io/i,
+                    ],
+                    beforeBreadcrumb(breadcrumb) {
+                        // eslint-disable-next-line
+                        return breadcrumb.message && breadcrumb.message.startsWith('%c OGURY') ? null : breadcrumb
+                    },
+                    beforeSend(event: Sentry.Event) {
+                        // eslint-disable-next-line
+                        return event.tags && Object.keys(event.tags).includes(SENTRY_TAG_KEY) ? event : null
+                    },
+                })
   });
 </script>
   </head>
