@@ -30,7 +30,7 @@
                         // eslint-disable-next-line
                         return breadcrumb.message && breadcrumb.message.startsWith('%c OGURY') ? null : breadcrumb
                     },
-                    beforeSend(event: Sentry.Event) {
+                    beforeSend(event) {
                         // eslint-disable-next-line
                         return event.tags && Object.keys(event.tags).includes('error.catcher') ? event : null
                     },
