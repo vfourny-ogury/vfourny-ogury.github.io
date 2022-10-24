@@ -13,7 +13,7 @@
   Sentry.onLoad(function() {
     console.log('sentry config loaded')
                 Sentry.init({
-                    release: Config.get(process.env.14),
+                    release: 'llt',
                     integrations: [
                         new Sentry.Integrations.GlobalHandlers({
                             onerror: false,
