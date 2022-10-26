@@ -8,49 +8,12 @@
   crossorigin="anonymous"
 >
             console.log('Sentry Lazy Loader loaded')</script>
-    
-    <script>
-  Sentry.onLoad(function() {
-    console.log('sentry config loaded')
-                Sentry.init({
-                    release: '3',
-                    integrations: [
-                        new Sentry.Integrations.GlobalHandlers({
-                            onerror: false,
-                            onunhandledrejection: false,
-                        }),
-                    ],
-                    tracesSampleRate: 1.0,
-                    allowUrls: [
-                        /mwtw\.presage\.io/i,
-                        /mobile-web-tag-www\.devc\.cloud\.ogury\.io/i,
-                        /mobile-web-tag-www\.staging\.cloud\.ogury\.io/i,
-                    ],
-                    beforeBreadcrumb(breadcrumb) {
-                        // eslint-disable-next-line
-                        return breadcrumb.message && breadcrumb.message.startsWith('%c OGURY') ? null : breadcrumb
-                    },
-                    beforeSend(event) {
-                        // eslint-disable-next-line
-                        return event.tags && Object.keys(event.tags).includes('error.catcher') ? event : null
-                    },
-                })
-  });
-</script>
+ 
   </head>
 
   <body style="margin: 0">
     <header id="header">Header</header>
     <script type="text/javascript"> console.log('test script'); 
-                        Sentry.captureException(new Error('lazy loading'), {
-                            level: 'error',
-                            tags: {
-                                ['mobile-web-tag-www']: 'vfourny-sentry.html',
-                                methodName: 'UNKNOWN',
-                                ad_session_id:  '',
-                                campaign_id: '',
-                            },
-                        });
     
                           throw new Error('lazy load error')</script>
   </body>
