@@ -35,6 +35,13 @@
                     },
                 })
   });
+      
+      try{
+        console.log('test script')
+        throw new Error('lazy load error')
+      }catch(err){
+        Sentry.captureException(err);
+      }
 </script>
   </head>
 
