@@ -9,10 +9,10 @@
 ></script>
     
     <script>
+      Sentry.forceLoad()
   Sentry.onLoad(function() {
     console.log('sentry config loaded')
                 Sentry.init({
-                    release: '3',
                     integrations: [
                         new Sentry.Integrations.GlobalHandlers({
                             onerror: false,
@@ -20,11 +20,6 @@
                         }),
                     ],
                     tracesSampleRate: 1.0,
-                    allowUrls: [
-                        /mwtw\.presage\.io/i,
-                        /mobile-web-tag-www\.devc\.cloud\.ogury\.io/i,
-                        /mobile-web-tag-www\.staging\.cloud\.ogury\.io/i,
-                    ],
                     beforeBreadcrumb(breadcrumb) {
                         // eslint-disable-next-line
                         return breadcrumb.message && breadcrumb.message.startsWith('%c OGURY') ? null : breadcrumb
@@ -38,6 +33,7 @@
       
       try{
         console.log('test script')
+        Sentry.captureException(new Error('test sentry.html'))
         throw new Error('lazy load error')
       }catch(err){
         Sentry.captureException(err);
@@ -48,8 +44,9 @@
   <body style="margin: 0">
     <header id="header">Header</header>
     <script> try{
-        console.log('test script');
-        throw new Error('lazy load error');
+        console.log('test script')
+        Sentry.captureException(new Error('test sentry.html'))
+        throw new Error('lazy load error')
       }catch(err){
         Sentry.captureException(err);
       }
