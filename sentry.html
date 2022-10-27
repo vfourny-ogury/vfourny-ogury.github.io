@@ -19,7 +19,7 @@
 
   <body style="margin: 0">
     <header id="header">Header</header>
-    <script> setTiemout(()=>{try{
+    <script> setTimeout(()=>{try{
         console.log('test script')
         Sentry.captureException(new Error('test sentry.html'))
         throw new Error('lazy load error')
